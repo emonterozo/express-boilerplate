@@ -1,0 +1,27 @@
+{
+  "name": "express-template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf dist && npx tsc",
+    "prestart": "yarn run build",
+    "start": "node dist/index.js",
+    "preserve": "yarn run build",
+    "serve": "concurrently \"npx tsc -w\"  \"nodemon dist/index.js\"",
+    "lint": "eslint ."
+  },
+  "license": "MIT",
+  "lint-staged": {
+    "src/**/*.ts": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "index.ts": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "_moduleAliases": {
+    "@routes": "dist/src/routes"
+  }
+}
