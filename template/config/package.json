@@ -1,14 +1,15 @@
 {
   "name": "express-template",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "build": "rimraf dist && npx tsc",
     "prestart": "yarn run build",
-    "start": "node dist/index.js",
+    "start": "node dist/server.js",
     "preserve": "yarn run build",
-    "serve": "concurrently \"npx tsc -w\"  \"nodemon dist/index.js\"",
-    "lint": "eslint ."
+    "serve": "concurrently \"npx tsc -w\"  \"nodemon dist/server.js\"",
+    "lint": "eslint .",
+    "test": "jest --coverage"
   },
   "license": "MIT",
   "lint-staged": {
@@ -16,7 +17,11 @@
       "prettier --write",
       "eslint --fix"
     ],
-    "index.ts": [
+    "app.ts": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "server.ts": [
       "prettier --write",
       "eslint --fix"
     ]

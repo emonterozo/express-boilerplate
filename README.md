@@ -12,6 +12,7 @@ Embark on your Express.js journey with confidence! This meticulously crafted boi
 - **Husky & lint-staged:** Ensure top-notch code quality with automated checks before each commit using Husky and lint-staged.
 - **Alias Path Importing:** Streamline your import statements with intelligently configured alias paths.
 - **TypeScript Support:** Embrace type safety and enhance code organization with TypeScript.
+- **Testing with Jest & Supertest:** Achieve reliable and efficient testing with Jest for test execution and Supertest for HTTP assertions.
 
 ## Testing Locally
 
@@ -59,6 +60,8 @@ To unleash the power of this Express.js Boilerplate locally, follow these simple
 - @types/cors
 - eslint
 - prettier
+- jest
+- supertest
 
 ## Getting Started
 

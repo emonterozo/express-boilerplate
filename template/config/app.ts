@@ -17,9 +17,8 @@ app.use(cors());
 app.use('/home', homeRouter);
 
 app.get('/', (req, res) => {
-  res.send('Welcome to Express Boilerplate');
+  res.sendStatus(200);
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`now listening on port ${process.env.PORT}`);
-});
+
+export default app;

@@ -18,9 +18,10 @@ const projectPath = path.join(currentPath, projectName);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const configPath = path.join(__dirname, '../config');
-const srcPath = path.join(__dirname, '../src');
-const preCommitPath = path.join(__dirname, '../pre-commit');
+const configPath = path.join(__dirname, '../template/config');
+const srcPath = path.join(__dirname, '../template/src');
+const preCommitPath = path.join(__dirname, '../template/pre-commit');
+const testPath = path.join(__dirname, '../template/__test__');
 
 
 if (fs.existsSync(projectPath)) {
@@ -36,12 +37,14 @@ if (fs.existsSync(projectPath)) {
   const copySpinner = ora("Copying template...").start();
   await createFolder(`${projectPath}/src`);
   await copyFolder(srcPath, `${projectPath}/src`);
+  await createFolder(`${projectPath}/__test__`);
+  await copyFolder(testPath, `${projectPath}/__test__`);
   await copyFolder(configPath, `${projectPath}/`);
   copySpinner.succeed();
 
   const installSpinner = ora("Installing dependencies...").start();
   await exec("yarn add @types/express @types/node concurrently cors dotenv express helmet joi module-alias rimraf typescript");
-  await exec("yarn add -D @commitlint/cli @commitlint/config-conventional @types/cors @typescript-eslint/parser eslint husky lint-staged nodemon prettier typescript-eslint");
+  await exec("yarn add -D @commitlint/cli @commitlint/config-conventional @types/cors @typescript-eslint/parser eslint husky lint-staged nodemon prettier typescript-eslint @types/jest @types/supertest jest supertest ts-jest");
   installSpinner.succeed();
 
   const finalSpinner = ora("Finalizing project...").start();
